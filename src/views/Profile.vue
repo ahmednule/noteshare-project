@@ -18,7 +18,7 @@
             By doing this you'll receive 10 points which can be used for Unlimited Downloads and Sharing
           </v-card-subtitle>
           <v-card-text>
-            <p>Profile page</p>
+            <p>Upload page</p>
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>

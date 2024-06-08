@@ -3,7 +3,10 @@
   <v-app>
     <!--the Navbar-->
     <v-app-bar app color="E1C2BB" text-white dark>
-      <v-icon color="yellow" left class="mr-2">fas fa-signature</v-icon>NOTESHARE
+      <v-toolbar dark prominent>
+         <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+         <v-toolbar-title class="toolbar-title">Noteshare</v-toolbar-title>
+     
       <v-spacer></v-spacer>
       <v-btn text>
         <router-link to="/profile" class="white--text">Profile</router-link>
@@ -17,6 +20,7 @@
       <v-btn text>
         <router-link to="/login" class="white--text">Login</router-link>
       </v-btn>
+       </v-toolbar>
     </v-app-bar>
       <v-container>
         <v-row align="center">
@@ -346,6 +350,7 @@ export default {
   name: 'LandingPage',
   data(){
     return {
+      
       testimonials: [
         {
           text: "NoteShare has revolutionized the way I study. Accessing notes from peers has helped me understand complex topics better.",
@@ -415,9 +420,14 @@ export default {
     },
     goToAboutUs() {
       this.$router.push({ name: 'AboutUs' });
+    },
+    drawer() {
+      this.drawer = !this.drawer;
     }
-  }
+
+    }
 };
+
 </script>
 
 <style scoped>
@@ -523,5 +533,10 @@ export default {
 
 .blue--text {
   color: #3b82f6;
+}
+.toolbar-title {
+  display:flex;
+  justify-content: left;
+align-content: left;
 }
 </style>
