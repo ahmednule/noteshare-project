@@ -4,10 +4,11 @@
     <!--the Navbar-->
     <v-app-bar app color="E1C2BB" text-white dark>
       <v-toolbar dark prominent>
-         <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+         <v-app-bar-nav-icon  @click="toogleDrawer"></v-app-bar-nav-icon>
          <v-toolbar-title class="toolbar-title">Noteshare</v-toolbar-title>
      
       <v-spacer></v-spacer>
+      
       <v-btn text>
         <router-link to="/profile" class="white--text">Profile</router-link>
       </v-btn>
@@ -22,6 +23,23 @@
       </v-btn>
        </v-toolbar>
     </v-app-bar>
+    <v-navigation-drawer
+        v-model="drawer"
+        :location="$vuetify.display.mobile ? 'bottom' : undefined"
+        temporary
+        color="purple"
+      >
+        <v-list>
+        <v-list-tile v-for="link in links" :key="link.text">
+          <v-list-tile-action>
+            <v-icon>{{ link.icon }}</v-icon>
+            </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ link.text }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
       <v-container>
         <v-row align="center">
           <v-col cols="auto">
@@ -350,6 +368,14 @@ export default {
   name: 'LandingPage',
   data(){
     return {
+      drawer: false,
+      links: [
+        { icon: 'mdi-home', text: 'Home', route: '/home' },
+        { icon: 'mdi-profile', text: 'Profile', route: '/profile' },
+        { icon: 'mdi-view-dashboard', text: 'Dashboard', route: '/dashboard' },
+        { icon: 'mdi-setting', text: 'Setting', route: '/setting' },
+        { icon: 'mdi-logout', text: 'Logout', route: '/logout' },
+      ],
       
       testimonials: [
         {
@@ -410,8 +436,8 @@ export default {
           title: 'Quality Resources',
           description: 'Find well-organized, high-quality study materials contributed by students and educators.',
           value: 'quality'
-        }
-      ]
+        },
+      ],
     };
   },
   methods: {
@@ -421,7 +447,7 @@ export default {
     goToAboutUs() {
       this.$router.push({ name: 'AboutUs' });
     },
-    drawer() {
+    toogleDrawer() {
       this.drawer = !this.drawer;
     }
 
