@@ -4,7 +4,7 @@
     <!--the Navbar-->
     <v-app-bar app color="E1C2BB" text-white dark>
       <v-toolbar dark prominent>
-         <v-app-bar-nav-icon  @click="toogleDrawer"></v-app-bar-nav-icon>
+         <v-app-bar-nav-icon  @click="toogleDrawer" color="black"></v-app-bar-nav-icon>
          <v-toolbar-title class="toolbar-title">Noteshare</v-toolbar-title>
      
       <v-spacer></v-spacer>
@@ -24,22 +24,43 @@
        </v-toolbar>
     </v-app-bar>
     <v-navigation-drawer
-        v-model="drawer"
-        :location="$vuetify.display.mobile ? 'bottom' : undefined"
-        temporary
-        color="purple"
-      >
-        <v-list>
-        <v-list-tile v-for="link in links" :key="link.text">
-          <v-list-tile-action>
-            <v-icon>{{ link.icon }}</v-icon>
-            </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ link.text }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        </v-list>
-      </v-navigation-drawer>
+    v-model="drawer"
+    :location="$vuetify.display.mobile ? 'bottom' : undefined"
+    temporary
+    color="primary"
+    app 
+  >
+    <v-list dense> <v-list-item link to="/"> <v-list-item-icon>
+          <v-icon>mdi-upload</v-icon> </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Upload</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item link="/dashboard">
+        <v-list-item-icon>
+          <v-icon>mdi-view-dashboard</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Dashboard</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item link="/settings">
+        <v-list-item-icon>
+          <v-icon>mdi-settings</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Settings</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item link="/support-us">
+        <v-list-item-icon>
+          <v-icon>mdi-heart</v-icon> </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Support Us</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
       <v-container>
         <v-row align="center">
           <v-col cols="auto">
