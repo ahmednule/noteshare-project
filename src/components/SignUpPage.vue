@@ -1,54 +1,56 @@
 <template>
   <div class="signup-background">
     <v-container class="signup-container custom-container">
-    <v-row justify="center">
-      <v-col cols="12" md="6">
-        <v-card class="pa-5 gradient-container">
-          <v-card-title class="justify-center">
-            <img src="../assets/images/logo1.jpeg" class="logo" alt="Logo" />
-          </v-card-title>
-          <v-card-subtitle class="text-center">
-            <h1>Sign Up</h1>
-          </v-card-subtitle>
-          <v-form  v-model="valid" ref="form">
-            <v-text-field
-              v-model="name"
-              :rules="[rules.required]"
-              label="Enter Name"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="email"
-              :rules="[rules.required, rules.email]"
-              label="Enter Email"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="password"
-              :rules="[rules.required, rules.min(6)]"
-              label="Enter Password"
-              type="password"
-              required
-            ></v-text-field>
-            <v-text-field
-            v-model="password"
-            :rules="[rules.required, rules.matchpassword]"
-            label="Confirm Password"
-            type="password"
-            required
-            ></v-text-field>
-            <v-btn class="register-button" color="primary" @click="submit">
-              Sign Up
-            </v-btn>
-          </v-form>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-</div>
+      <v-row justify="center">
+        <v-col cols="12" md="6">
+          <v-card class="pa-5 gradient-container">
+            <v-card-title class="justify-center">
+              <img src="../assets/images/logo1.jpeg" class="logo" alt="Logo" />
+            </v-card-title>
+            <v-card-subtitle class="text-center">
+              <h1>Sign Up</h1>
+            </v-card-subtitle>
+            <v-form v-model="valid" ref="form">
+              <v-text-field
+                v-model="name"
+                :rules="[rules.required]"
+                label="Enter Name"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-model="email"
+                :rules="[rules.required, rules.email]"
+                label="Enter Email"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-model="password"
+                :rules="[rules.required, rules.min(6)]"
+                label="Enter Password"
+                type="password"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-model="confirmPassword"
+                :rules="[rules.required, rules.matchPassword]"
+                label="Confirm Password"
+                type="password"
+                required
+              ></v-text-field>
+              <v-btn class="register-button" color="primary" @click="submit">
+                Sign Up
+              </v-btn>
+            </v-form>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
+import axios from 'axios'; // Import Axios
+
 export default {
   name: 'SignUp',
   data() {
@@ -57,25 +59,40 @@ export default {
       name: '',
       email: '',
       password: '',
+      confirmPassword: '',
       rules: {
         required: value => !!value || 'Required.',
         email: value => {
-          const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-          return pattern.test(value) || 'Invalid e-mail.'
+          const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return pattern.test(value) || 'Invalid e-mail.';
         },
         min: v => v.length >= 6 || 'Min 6 characters',
+        matchPassword: v => v === this.password || 'Passwords do not match.',
       },
-    }
+    };
   },
   methods: {
-    submit() {
+    async submit() {
       if (this.$refs.form.validate()) {
-        // Handle form submission
-        alert('Form Submitted!')
+        try {
+          const response = await axios.post('/api/auth/signup/', {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+          });
+
+          // Handle successful signup response here
+          // (e.g., store token, redirect to login page)
+          console.log('Signup successful:', response.data);
+          this.$router.push('/login'); // Redirect to login page
+
+        } catch (error) {
+          console.error('Error signing up:', error.response.data); // Handle errors
+        }
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>
