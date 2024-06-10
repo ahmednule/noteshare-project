@@ -4,7 +4,7 @@
     <!--the Navbar-->
     <v-app-bar app color="E1C2BB" text-white dark>
       <v-toolbar dark prominent>
-         <v-app-bar-nav-icon  @click="toogleDrawer" color="black"></v-app-bar-nav-icon>
+         <v-app-bar-nav-icon  @click="toogleDrawer" color="black"><v-icon>mdi-menu</v-icon></v-app-bar-nav-icon>
          <v-toolbar-title class="toolbar-title">Noteshare</v-toolbar-title>
      
       <v-spacer></v-spacer>
