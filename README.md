@@ -1,22 +1,36 @@
-# noteshare-frontend
-This projet was part of my portfolio Project our alx africa bootcamp. This project was done so that it could enhance our undestanding during the last 9 months in my bootcamp. The project comprised of 4 people, 3 registed and 1 who had failed to get a team so we decided to take her in so that she could help us during development. We deided to work on the frontend both of us.
+Noteshare Frontend
+Introduction
+This repository houses the frontend components of Noteshare, a collaborative note-sharing application. It was developed as part of our portfolio project during the ALX Africa Bootcamp. Through this project, we solidified our understanding of web development principles honed over the past nine months.
+Team
+Ahmed Nule 
+Saisa Wamaitha
+Project Setup
+Clone the Repository:
+Bash
+git clone https://github.com/your-username/noteshare-frontend.git
 
-Incase you clone the repository use the commands below to make it be active and see what we did, Incase of an insure make sure to reach our, we like helping out.
 
-## Project setup
-```
+Install Dependencies:
+Bash
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
+
+Development Mode (Hot Reload):
+Bash
 npm run serve
-```
 
-### Compiles and minifies for production
-```
+This starts the development server and enables hot reloading, allowing you to see changes reflected in the browser as you save your code.
+Production Build:
+Bash
 npm run build
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This creates an optimized production-ready build of your frontend code.
+Customization: Configuration options for the project can be found in the package.json file. Feel free to customize settings as needed.
+Project Structure
+The main entry of your files should be, the App.vue file, all or the components have been reused here.
+Technologies Used
+Vue js and Vuetify for the frontend 
+Usage 
+At the moment, the application is not online, hit will be hosting it soon for the mean time, do npm run ruild to see them 
+Contributing
+Incase of you want to contribute, just fork, the repository and once you're done, push
